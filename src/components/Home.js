@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { fetchRoots } from '../actions';
 import sentenceCase from 'sentence-case';
 import {
+	Alert,
 	Nav,
 	NavItem,
 	NavLink,
@@ -10,6 +11,9 @@ import {
 } from 'reactstrap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import Tab from './Tab';
+import SpinnerCentered from './SpinnerCentered';
 
 const Home = () => {
 	const dispatch = useDispatch();
@@ -25,7 +29,8 @@ const Home = () => {
 	return (
 		<div>
 			<h1>{'My little Star Wars app 👾'}</h1>
-
+			{roots.isLoading && <SpinnerCentered/>}
+			{roots.error && <Alert color="danger"> Error fetching data</Alert>}
 			{roots.payload && (
 				<div className={'mt-3'}>
 					<Nav tabs>
@@ -47,7 +52,10 @@ const Home = () => {
 								key={k}
 								tabId={k}
 							>
-								<code>{'todo: load resource table'}</code>
+								<Tab
+									activeTab={tab}
+									type={k}
+								/>
 							</TabPane>
 						))}
 					</TabContent>
