@@ -8,7 +8,7 @@
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "json-client": "^0.9.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-icons": "^3.8.0",
